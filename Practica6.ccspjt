@@ -1,0 +1,21 @@
+[PROJECT]
+Target=Practica6.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.012
+Compiler=PCH
+[Target Data]
+FileList=Practica6.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[Practica6.c]
+Type=4
+[mru-list]
+1=Practica6.c
+[Opened Files]
+1=Practica6.c
+2=..\..\..\..\..\Downloads\DHT11.h
+3=
+4=
+[Units]
+Count=1
+1=Practica6 (main)

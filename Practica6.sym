@@ -1,0 +1,101 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 strtok.save
+006-009 _Randseed
+00A     Check
+00B     TemByte1
+00C     TemByte2
+00D     RhByte1
+00E     RhByte2
+00F     CheckSum
+010.0   Time_out
+011     unidad
+012     decena
+013     unidadHR
+014     decenaHR
+015     T_byte1
+016     T_byte2
+017     RH_byte1
+018     RH_byte2
+019     Sum
+01A     Read_Data.i
+01A     @DIV88.P1
+01A     @delay_ms1.P2
+01A     MAIN.@SCRATCH1
+01B     Read_Data.k
+01B     @DIV88.P1
+01C     Read_Data.data
+01C     @DIV88.@SCRATCH1
+01D     Read_Data.@SCRATCH1
+F82.4   DataDht
+F83     PSP_DATA
+F94.4   Data_Pin_Direction
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  check_response
+000032  @delay_ms1
+00005C  Start_signal
+000078  Read_Data
+00010C  @DIV88
+000134  MAIN
+000134  @cinit1
+00014C  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\Mon Villaseñor\Documents\4to_Semestre\Sistemas_Embebidos\Practica_6\Practica6\
+
+Project Files:
+    Practica6.c                                             [31-may.-18 13:16  CRC=68DCD2C0]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep.-13 17:34  CRC=044A57BA]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 14:24  CRC=4E4534F4]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 11:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 10:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun.-11 15:39  CRC=0B6669CF]
+    DHT11.h                                                 [31-may.-18 12:22  CRC=151251B5]
+
+Source signature=CB814741
+
+Units:
+    Practica6 (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   Practica6.xsym
+    Errors:      Practica6.err
+    Ext Symbols: Practica6.esym
+    INHX32:      Practica6.hex
+    Symbols:     Practica6.sym
+    List:        Practica6.lst
+    Debug/COFF:  Practica6.cof
+    Project:     Practica6.ccspjt
+    Call Tree:   Practica6.tre
+    Statistics:  Practica6.STA

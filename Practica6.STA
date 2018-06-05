@@ -1,0 +1,55 @@
+
+ROM used:   490/65536 (1%)
+            490/65536 (1%) including unused fragments
+
+            0.2 Average locations per line
+            1.2 Average locations per statement
+
+RAM used:   27/3968 (1%) at main() level
+            30/3968 (1%) worst case
+
+Stack used: 2 worst case (2 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   52    24   6  Practica6.c
+  834     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
+   37     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h
+  423     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
+   32     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
+   28     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
+ 1351   359  85  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h
+   57    41  10  DHT11.h
+----- -----
+ 2814   424 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     42   4    1             @delay_ms1
+0     28   3    0   108  1.7  Start_signal
+0     46   5    0   106  2.5  check_response
+0    148  15    4   662  7.6  Read_Data
+0    182  19    1   639  4.8  MAIN
+0     40   4    3   106  2.5  @DIV88
+ Inline         0   662  7.6  @cinit1
+
+Program metrics:
+    Functions               6
+    Statements              424
+    Comments                709
+    Volume (V)              3227
+    Difficulty (D)          26.8
+    Effort to implement (E) 86553
+    Time to implement (T)   1 hours, 20 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   16
+    Maintainability (MI)    23
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE   486  65046  
+
+
+

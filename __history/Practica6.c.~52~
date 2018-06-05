@@ -1,0 +1,100 @@
+#include <18F4620.h>
+#include <stdio.h>
+#include <stdlib.h>
+#fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
+#fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
+#use delay(clock=16000000)
+#use fast_io(a)
+#use fast_io(b)
+#use fast_io(d)
+#use fast_io(e)
+
+unsigned char Check;
+unsigned char unidad=0,decena =0, unidadHR=0, decenaHR = 0;
+unsigned char T_byte1, T_byte2, RH_byte1, RH_byte2;
+unsigned char Sum;
+short Time_out;
+#bit DataDHT = 0xf82.4
+#bit DhtTris = 0xf94.4
+#define Dht11 PIN_c4 
+
+void StartSignal(){
+   DhtTris = 0;
+   //output_c(0x00);
+   output_low(Dht11);
+   output_high(Dht11);
+   delay_us(18);
+   //output_c(0xFF);
+   output_high(Dht11);
+   delay_us(30);
+   DhtTris = 1;
+      output_e(0x01);
+      //output_e(0x00);
+}
+
+void ChequeadorDeRespuesta(){
+   Check = 0;
+   delay_ms(40);
+   if(DataDHT == 0){
+      delay_us(80);
+      //output_d(0x06);
+      if(DataDHT == 1){
+          return 1;
+          //delay_us(40);
+          //output_d(0x06);
+      }
+   }
+}
+
+char ReadData(){
+   int8 i,j;
+   for(j = 0; j<8; j++){
+      while(!input(Dht11));
+      delay_us(30);
+      if(input(Dht11) == 0){
+         i&= ~(1<<(7 - j));
+      }
+      else{
+         i|= (1 << (7 -j));
+         while(input(Dht11));
+      }
+   }
+   return i;
+}
+
+void main(void) {
+   setup_oscillator(OSC_16MHZ);
+   set_tris_a(0x00);
+   set_tris_b(0x01);
+   set_tris_e(0x00);
+   set_tris_d(0x00);
+   
+while (1) {
+   
+   //ChequeadorDeRespuesta();
+   //output_a(0x0F);
+   StartSignal();
+   if(ChequeadorDeRespuesta())
+   {
+      output_d(0x06);
+      RH_byte1 = ReadData();
+      RH_byte2 = ReadData();
+      T_byte1 = ReadData();
+      T_byte2 = ReadData();
+      Sum= ReadData();
+      if(Sum == ((RH_byte1+RH_byte2+T_byte1+T_byte2) & 0xFF)){
+         decenaHR = RH_byte1/10;
+         unidadHR = RH_byte1%10;
+         decena = t_byte1/10;
+         unidad = T_byte1%10;
+         
+         output_d(decenaHR);                       
+      }
+   }
+      
+   
+   
+}
+
+
+}

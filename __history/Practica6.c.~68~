@@ -1,0 +1,101 @@
+#include <18F4620.h>
+#include <stdio.h>
+#include <stdlib.h>
+#fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
+#fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
+#use delay(clock=16000000)
+
+
+unsigned char Check;
+unsigned char unidad=0,decena =0, unidadHR=0, decenaHR = 0;
+unsigned char T_byte1, T_byte2, RH_byte1, RH_byte2;
+unsigned char Sum;
+short Time_out;
+#bit DataDHT = 0xf82.4
+#bit DhtTris = 0xf94.4
+#define Dht11 PIN_c4 
+
+void StartSignal(){
+   DhtTris = 0;              // Configure connection pin as output
+  DataDHT = 0;                        // Connection pin output low
+  delay_ms(25);
+  DataDHT = 1;                        // Connection pin output high
+  delay_us(30);
+  DhtTris = 1;
+}
+
+int ChequeadorDeRespuesta(){
+   Check = 0;
+   delay_ms(40);
+   if(DataDHT == 0){
+      delay_us(80);
+      //output_d(0x06);
+      if(DataDHT == 1){
+          
+          delay_us(50);
+          //output_d(0x06);
+          return 1;
+      }
+   }
+}
+
+char ReadData(){
+   unsigned int8 i, k, _data = 0;     // k is used to count 1 bit reading duration
+  if(Time_out)
+    break;
+  for(i = 0; i < 8; i++){
+    k = 0;
+    while(!DataDHT){                          // Wait until pin goes high
+      k++;
+      if (k > 100) {Time_out = 1; break;}
+      delay_us(1);}
+    delay_us(30);
+    if(!DataDHT)
+      bit_clear(_data, (7 - i));               // Clear bit (7 - i)
+    else{
+      bit_set(_data, (7 - i));                 // Set bit (7 - i)
+      while(DataDHT){                         // Wait until pin goes low
+      k++;
+      if (k > 100) {Time_out = 1; break;}
+      delay_us(1);}
+    }
+  }
+  return _data;
+}
+
+void main(void) {
+   setup_oscillator(OSC_16MHZ);
+   set_tris_a(0x00);
+   //set_tris_b(0x00);
+   set_tris_e(0x00);
+   
+   
+while (1) {
+   
+   //ChequeadorDeRespuesta();
+   //output_a(0x0F);
+   StartSignal();
+   if(ChequeadorDeRespuesta())
+   {
+      output_a(0x01);
+      RH_byte1 = ReadData();
+      RH_byte2 = ReadData();
+      T_byte1 = ReadData();
+      T_byte2 = ReadData();
+      Sum= ReadData();
+      if(Sum == ((RH_byte1+RH_byte2+T_byte1+T_byte2) )){
+         decenaHR = RH_byte1/10;
+         unidadHR = RH_byte1%10;
+         decena = t_byte1/10;
+         unidad = T_byte1%10;
+         
+         output_d(decenaHR);                       
+      }
+   }
+      
+   
+   
+}
+
+
+}

@@ -27,19 +27,18 @@ while (true) {
    Start_Signal();
    if(Check_response())
    {
-      //output_a(0x01);
+      output_a(0x01);
       RH_byte1 = Read_Data();
       RH_byte2 = Read_Data();
       T_byte1 = Read_Data();
       T_byte2 = Read_Data();
       Sum= Read_Data();
-      if(Sum == ((RH_byte1+RH_byte2+T_byte1+T_byte2))){
+      if(Sum == ((RH_byte1+RH_byte2+T_byte1+T_byte2) )){
          decenaHR = RH_byte1/10;
          unidadHR = RH_byte1%10;
          decena = t_byte1/10;
          unidad = T_byte1%10;
-         output_d(decenaHR);   
-         output_a(0x01);
+         output_d(decenaHR);                       
       }
    }
       

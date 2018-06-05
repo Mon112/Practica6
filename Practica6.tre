@@ -1,0 +1,16 @@
+ÀÄPractica6
+   ÀÄMAIN  0/182  Ram=1
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄcheck_response  0/46  Ram=0
+      ÃÄStart_signal  0/28  Ram=0
+      ³  ÀÄ@delay_ms1  0/42  Ram=1
+      ÃÄcheck_response  0/46  Ram=0
+      ÃÄRead_Data  0/148  Ram=4
+      ÃÄRead_Data  0/148  Ram=4
+      ÃÄRead_Data  0/148  Ram=4
+      ÃÄRead_Data  0/148  Ram=4
+      ÃÄRead_Data  0/148  Ram=4
+      ÃÄ@DIV88  0/40  Ram=3
+      ÃÄ@DIV88  0/40  Ram=3
+      ÃÄ@DIV88  0/40  Ram=3
+      ÀÄ@DIV88  0/40  Ram=3
